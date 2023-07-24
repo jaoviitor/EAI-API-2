@@ -10,6 +10,7 @@ const rotaAgendamento = require('./routes/agendamento');
 const rotaCliente = require('./routes/cliente');
 const rotaEndereco = require('./routes/endereco');
 const rotaEmail = require('./routes/Email');
+const rotaPlano = require('./routes/planos');
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -27,6 +28,7 @@ app.use((req, res, next) =>{
     next();
 })
 
+app.use('/plano', rotaPlano);
 app.use('/empresa', rotaEmpresa);
 app.use('/funcionario', rotaFuncionario);
 app.use('/agendamento', rotaAgendamento);
