@@ -5,6 +5,7 @@ const mysql = require('../mysql').pool;
 router.post('/', (req, res, next) => {
 
     mysql.getConnection((error, conn) =>{
+        if(error){ return res.status(500).send({ error: error }) };
         conn.query('INSERT INTO planos (endereco_id, data, hora, confirmacao, situacao, quantidade_meses, frequencia) VALUES (?,?,?,?,?,?,?)',
         [req.body.endereco_id, req.body.data, req.body.hora, req.body.confirmacao, req.body.situacao, req.body.quantidade_meses, req.body.frequencia],
         (error, resultado, field) =>{
