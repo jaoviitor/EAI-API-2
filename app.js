@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 
 const rotaPlano = require('./routes/planos');
 const rotaAgendamento = require('./routes/agendamento');
+const rotaEmpresa = require('./routes/empresa');
+const rotaFuncionario = require('./routes/funcionario');
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -26,6 +28,10 @@ app.use((req, res, next) =>{
 
 app.use('/plano', rotaPlano);
 app.use('/agendamento', rotaAgendamento);
+app.use('/empresa', rotaEmpresa);
+app.use('/funcionario', rotaFuncionario);
+
+
 
 //TRATAMENTO PARA QUANDO NÃO FOR ENCONTRADO UMA ROTA
 app.use((req, res, next) =>{
