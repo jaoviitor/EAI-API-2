@@ -17,12 +17,13 @@ router.get('/', (req, res, next) => {
     })
 });
 
+//ALTERA O STATUS DO AGENDAMENTO
 router.post('/:id', (req, res, next) => {
 
     const situacao = 'Pago';
     mysql.getConnection((error, conn) =>{
-        conn.query('UPDATE agendamento SET situacao = ? WHERE  id = ?',
-        [situacao, req.params.id],
+        conn.query('UPDATE agendamento SET situacao = ?, valor = ?  WHERE  id = ?',
+        [situacao, req.body.valor, req.params.id],
         (error, resultado, field) =>{
             conn.release();
 
