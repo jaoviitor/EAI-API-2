@@ -29,7 +29,7 @@ router.get('/', (req, res, next) => {
 router.post('/cadastro', (req, res, next) => {
     const tamanhoToken = 6;
     const token = gerarToken(tamanhoToken);
-    const linkAtivacao = `https://eaiconecta.onrender.com/empresa/ativacao/${token}`
+    const linkAtivacao = `https://eai-api-complementar.onrender.com/empresa/ativacao/${token}`
     mysql.getConnection((error, conn) =>{
         if(error){ return res.status(500).send({ error: error }) };
         conn.query('SELECT * FROM Empresa WHERE Email = ?', [req.body.Email], (error, results) =>{
