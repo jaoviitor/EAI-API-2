@@ -254,7 +254,7 @@ router.post('/ativacao', (req, res, next) =>{
                 }
                 conn.query(
                     'UPDATE Empresa SET verificacao = 1 WHERE tokenVerificacao = ?',
-                    [req.params.token],
+                    [req.body.token],
                     (error, result) =>{
                         conn.release();
                         if(error){ return res.status(500).send({ error: error }) };
