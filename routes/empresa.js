@@ -143,7 +143,7 @@ router.post('/cadastro', (req, res, next) => {
                                         <p>Para validar a sua conta, clique no botão abaixo:</p>
                                     </div>
                                     <div class="validate-button-container">
-                                        <a href="https://eaiconecta.onrender.com/empresa/ativacao/${token}" class="validate-button" style="text-decoration: none; color: #ffffff;">Valide Agora</a>
+                                        <a method="GET" href="https://eaiconecta.onrender.com/empresa/ativacao/${token}" class="validate-button" style="text-decoration: none; color: #ffffff;">Valide Agora</a>
                                     </div>
                                 </div>
                             </body>
