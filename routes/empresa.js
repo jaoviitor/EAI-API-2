@@ -144,18 +144,6 @@ router.post('/cadastro', (req, res, next) => {
                                         background: var(--bg);
                                         transition: 0.2s;
                                     }
-                            
-                                    .button:hover {
-                                        color: var(--hover-text);
-                                        transform: translate(-0.25rem, -0.25rem);
-                                        background: var(--hover-bg);
-                                        box-shadow: 0.1rem 0.1rem var(--bg);
-                                    }
-                            
-                                    .button:active {
-                                        transform: translate(0);
-                                        box-shadow: none;
-                                    }
                                 </style>
                             </head>
                             
