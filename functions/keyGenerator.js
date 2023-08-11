@@ -1,5 +1,5 @@
 function gerarToken(tamanho) {
-    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let token = '';
     
     for (let i = 0; i < tamanho; i++) {
