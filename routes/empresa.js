@@ -8,6 +8,7 @@ const login = require('../middleware/login');
 const gerarToken = require('../functions/keyGenerator');
 const nodemailer = require('nodemailer');
 const { token } = require('morgan');
+const path = require('path');
 
 //RETORNA AS EMPRESAS CADASTRADAS
 router.get('/', (req, res, next) => {
@@ -237,7 +238,8 @@ router.get('/ativacao/:token', (req, res, next) =>{
                         conn.release();
                         if(error){ return res.status(500).send({ error: error }) };
                     })
-                return res.redirect('../views/sucesso_ativacao.html');
+                const filePath = path.join(__dirname, '../views/sucesso_ativacao.html');
+                return res.sendFile(filePath);
             }
         )
     })
