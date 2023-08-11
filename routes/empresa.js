@@ -65,12 +65,14 @@ router.post('/cadastro', (req, res, next) => {
                             text: `Valide sua conta acessando o link: ${linkAtivacao}`,
                             html: `<!DOCTYPE html>
                             <html lang="pt-br">
+                            
                             <head>
                                 <meta charset="UTF-8">
                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                 <title>Document</title>
                                 <style>
                                     @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+                            
                                     body {
                                         margin: 0;
                                         padding: 0;
@@ -126,13 +128,44 @@ router.post('/cadastro', (req, res, next) => {
                                         text-decoration: none;
                                         border-radius: 5px;
                                     }
+                            
+                                    #validateLink {
+                                        cursor: pointer;
+                                    }
+                            
+                                    .button {
+                                        --bg: #000;
+                                        --hover-bg: #F34E15;
+                                        --hover-text: #000;
+                                        color: #fff;
+                                        border: 1px solid var(--bg);
+                                        border-radius: 4px;
+                                        padding: 0.8em 2em;
+                                        background: var(--bg);
+                                        transition: 0.2s;
+                                    }
+                            
+                                    .button:hover {
+                                        color: var(--hover-text);
+                                        transform: translate(-0.25rem, -0.25rem);
+                                        background: var(--hover-bg);
+                                        box-shadow: 0.1rem 0.1rem var(--bg);
+                                    }
+                            
+                                    .button:active {
+                                        transform: translate(0);
+                                        box-shadow: none;
+                                    }
                                 </style>
                             </head>
+                            
                             <body>
                                 <div class="container">
                                     <!-- Área de Bem-Vindo -->
                                     <div class="header">
-                                        <img class="logo" src="https://cdn.discordapp.com/attachments/1030689922681688175/1137001336328683520/image.png" alt="Logo da Minha Empresa">
+                                        <img class="logo"
+                                            src="https://cdn.discordapp.com/attachments/1030689922681688175/1137001336328683520/image.png"
+                                            alt="Logo da Minha Empresa">
                                     </div>
                                     <div class="welcome-message">
                                         <h1>Bem-vindo ao e.Aí Conecta</h1>
@@ -143,27 +176,30 @@ router.post('/cadastro', (req, res, next) => {
                                         <p>Para validar a sua conta, clique no botão abaixo:</p>
                                     </div>
                                     <div class="validate-button-container">
-                                        <a class="validate-button" style="text-decoration: none; color: #ffffff;" id="validateLink">Valide Agora</a>
+                                        <button class="button" id="validateLink">
+                                            Valide
+                                            Agora
+                                        </button>
                                     </div>
                                 </div>
                                 <script>
-                                    document.getElementById('validateLink').addEventListener('click', function(event) {
+                                    document.getElementById('validateLink').addEventListener('click', function (event) {
                                         event.preventDefault();
-
-                                        fetch(https://eaiconecta.onrender.com/empresa/ativacao/${token}, {
+                                        fetch(https: //eaiconecta.onrender.com/empresa/ativacao/${token}, {
                                             method: 'GET'
                                         })
-                                        .then(response => {
-                                            // Aqui você pode lidar com a resposta, se necessário
-                                            console.log('Requisição GET bem-sucedida:', response);
-                                        })
-                                        .catch(error => {
-                                            // Lidar com erros, se houver
-                                            console.error('Erro na requisição GET:', error);
-                                        });
+                                    .then(response => {
+                                        // Aqui você pode lidar com a resposta, se necessário
+                                        console.log('Requisição GET bem-sucedida:', response);
+                                    })
+                                    .catch(error => {
+                                        // Lidar com erros, se houver
+                                        console.error('Erro na requisição GET:', error);
+                                    });
                                     });
                                 </script>
                             </body>
+                            
                             </html>`
                         }
                         async function sendMail(transporter, sender, receiver, mailContent){
