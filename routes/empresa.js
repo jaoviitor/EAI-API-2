@@ -62,7 +62,7 @@ router.post('/cadastro', (req, res, next) => {
                         }
                         const mailContent = {
                             subject: 'Verifique sua conta',
-                            text: `Valide sua conta acessando o link: ${linkAtivacao}`,
+                            text: `Valide sua conta com o token: ${token}`,
                             html: `<!DOCTYPE html>
                             <html lang="pt-br">
                             
@@ -156,36 +156,16 @@ router.post('/cadastro', (req, res, next) => {
                                             alt="Logo da Minha Empresa">
                                     </div>
                                     <div class="welcome-message">
-                                        <h1>Bem-vindo ao e.Aí Conecta</h1>
+                                        <h1>${token}</h1>
                                     </div>
                             
                                     <!-- Área de Validação da Conta -->
                                     <div class="validation-text">
-                                        <p>Para validar a sua conta, clique no botão abaixo:</p>
+                                        <p>Para validar a sua conta, informe o token acima no site.</p>
                                     </div>
                                     <div class="validate-button-container">
-                                        <button class="button" id="validateLink">
-                                            Valide
-                                            Agora
-                                        </button>
                                     </div>
                                 </div>
-                                <script>
-                                    document.getElementById('validateLink').addEventListener('click', function (event) {
-                                        event.preventDefault();
-                                        fetch(https: //eaiconecta.onrender.com/empresa/ativacao/${token}, {
-                                            method: 'GET'
-                                        })
-                                    .then(response => {
-                                        // Aqui você pode lidar com a resposta, se necessário
-                                        console.log('Requisição GET bem-sucedida:', response);
-                                    })
-                                    .catch(error => {
-                                        // Lidar com erros, se houver
-                                        console.error('Erro na requisição GET:', error);
-                                    });
-                                    });
-                                </script>
                             </body>
                             
                             </html>`
@@ -260,16 +240,16 @@ router.post('/login', (req, res, next) =>{
     })
 })
 
-router.get('/ativacao/:token', (req, res, next) =>{
+router.post('/ativacao', (req, res, next) =>{
     mysql.getConnection((error, conn) =>{
         if(error){ return res.status(500).send({ error: error }) };
         conn.query(
             'SELECT * FROM Empresa WHERE tokenVerificacao = ?;',
-            [req.params.token],
+            [req.body.tokenVerificacao],
             (error, resultado, fields) =>{
                 conn.release();
                 if(error){ return res.status(500).send({ error: error }) };
-                if (resultado.length < 1){ //conferindo se o email está no banco
+                if (resultado.length < 1){
                     return res.status(401).send({ mensagem: 'Falha na autenticação' });
                 }
                 conn.query(
@@ -279,8 +259,7 @@ router.get('/ativacao/:token', (req, res, next) =>{
                         conn.release();
                         if(error){ return res.status(500).send({ error: error }) };
                     })
-                const filePath = path.join(__dirname, '../views/sucesso_ativacao.html');
-                return res.sendFile(filePath);
+                return res.status(201).send({response: resultado});
             }
         )
     })
