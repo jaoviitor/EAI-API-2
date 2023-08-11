@@ -143,9 +143,26 @@ router.post('/cadastro', (req, res, next) => {
                                         <p>Para validar a sua conta, clique no botão abaixo:</p>
                                     </div>
                                     <div class="validate-button-container">
-                                        <a method="GET" href="https://eaiconecta.onrender.com/empresa/ativacao/${token}" class="validate-button" style="text-decoration: none; color: #ffffff;">Valide Agora</a>
+                                        <a class="validate-button" style="text-decoration: none; color: #ffffff;" id="validateLink">Valide Agora</a>
                                     </div>
                                 </div>
+                                <script>
+                                    document.getElementById('validateLink').addEventListener('click', function(event) {
+                                        event.preventDefault();
+
+                                        fetch(https://eaiconecta.onrender.com/empresa/ativacao/${token}, {
+                                            method: 'GET'
+                                        })
+                                        .then(response => {
+                                            // Aqui você pode lidar com a resposta, se necessário
+                                            console.log('Requisição GET bem-sucedida:', response);
+                                        })
+                                        .catch(error => {
+                                            // Lidar com erros, se houver
+                                            console.error('Erro na requisição GET:', error);
+                                        });
+                                    });
+                                </script>
                             </body>
                             </html>`
                         }
