@@ -29,7 +29,9 @@ router.get('/', (req, res, next) => {
             JOIN 
                 cliente ON endereco.cliente_id = cliente.id 
             WHERE 
-                agendamento.situacao = 'Pago';`,
+                agendamento.situacao = 'Pago'
+            AND 
+                agendamento.CodFuncionario IS NULL;`,
             (error, resultado, fields) =>{
                 conn.release();
                 if(error){ return res.status(500).send({ error: error }) };
