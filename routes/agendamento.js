@@ -41,6 +41,46 @@ router.get('/', (req, res, next) => {
     })
 });
 
+
+//RETORNA OS AGENDAMENTOS EM ABERTO
+router.get('/aberto', (req, res, next) => {
+    mysql.getConnection((error, conn) =>{
+        if(error){ return res.status(500).send({ error: error }) };
+        conn.query(
+            `SELECT 
+                agendamento.*, 
+                endereco.id AS endereco_id,
+                cliente.id AS cliente_id,
+                endereco.logradouro,
+                endereco.numero,
+                endereco.complemento,
+                endereco.bairro,
+                endereco.cep,
+                endereco.municipio,
+                endereco.uf,
+                endereco.area,
+                cliente.nome,
+                cliente.cpf_cnpj,
+                cliente.telefone
+            FROM 
+                agendamento 
+            JOIN 
+                endereco ON agendamento.endereco_id = endereco.id 
+            JOIN 
+                cliente ON endereco.cliente_id = cliente.id 
+            WHERE 
+                agendamento.situacao = 'Em aberto'
+            AND 
+                agendamento.CodFuncionario IS NULL;`,
+            (error, resultado, fields) =>{
+                conn.release();
+                if(error){ return res.status(500).send({ error: error }) };
+                return res.status(200).send({response: resultado});
+            }
+        )
+    })
+});
+
 //ALTERA O STATUS DO AGENDAMENTO
 router.post('/:id', (req, res, next) => {
 
