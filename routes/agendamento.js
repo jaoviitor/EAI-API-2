@@ -65,6 +65,8 @@ router.post('/:id', (req, res, next) => {
 router.put('/atribuir/:CodAgendamento', (req, res, next) => {
     const CodAgendamento = req.params.CodAgendamento;
     const CodFuncionario = req.body.CodFuncionario;
+    const CodEmpresa = req.body.CodEmpresa;
+    const situacao = 'Em aberto';
     
     mysql.getConnection((error, conn) => {
       if (error) {
@@ -72,8 +74,8 @@ router.put('/atribuir/:CodAgendamento', (req, res, next) => {
       };
       
       conn.query(
-        'UPDATE agendamento SET CodFuncionario = ? WHERE id = ?',
-        [CodFuncionario, CodAgendamento],
+        'UPDATE agendamento SET CodFuncionario = ?, CodEmpresa = ?, situacao = ? WHERE id = ?',
+        [CodFuncionario, CodEmpresa, situacao, CodAgendamento],
         (error, resultado, fields) => {
           conn.release();
           if (error) {
