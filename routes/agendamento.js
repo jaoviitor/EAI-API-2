@@ -11,8 +11,17 @@ router.get('/', (req, res, next) => {
                 agendamento.*, 
                 endereco.id AS endereco_id,
                 cliente.id AS cliente_id,
-                endereco.*,
-                cliente.*
+                endereco.logradouro,
+                endereco.numero,
+                endereco.complemento,
+                endereco.bairro,
+                endereco.cep,
+                endereco.municipio,
+                endereco.uf,
+                endereco.area,
+                cliente.nome,
+                cliente.cpf_cnpj,
+                cliente.telefone
             FROM 
                 agendamento 
             JOIN 
