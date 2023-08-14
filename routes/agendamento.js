@@ -7,7 +7,20 @@ router.get('/', (req, res, next) => {
     mysql.getConnection((error, conn) =>{
         if(error){ return res.status(500).send({ error: error }) };
         conn.query(
-            `SELECT * FROM agendamento JOIN endereco ON agendamento.endereco_id = endereco.id JOIN cliente ON endereco.cliente_id = cliente.id WHERE agendamento.situacao = 'Pago';`,
+            `SELECT 
+                agendamento.*, 
+                endereco.id AS endereco_id,
+                cliente.id AS cliente_id,
+                endereco.*,
+                cliente.*
+            FROM 
+                agendamento 
+            JOIN 
+                endereco ON agendamento.endereco_id = endereco.id 
+            JOIN 
+                cliente ON endereco.cliente_id = cliente.id 
+            WHERE 
+                agendamento.situacao = 'Pago';`,
             (error, resultado, fields) =>{
                 conn.release();
                 if(error){ return res.status(500).send({ error: error }) };
