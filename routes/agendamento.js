@@ -59,21 +59,25 @@ router.get('/aberto/:id', (req, res, next) => {
             endereco.municipio,
             endereco.uf,
             endereco.area,
-            cliente.nome,
+            cliente.nome AS cliente_nome,
             cliente.cpf_cnpj,
-            cliente.telefone
+            cliente.telefone,
+            Funcionario.Nome AS funcionario_nome
         FROM 
             agendamento 
         JOIN 
             endereco ON agendamento.endereco_id = endereco.id 
         JOIN 
             cliente ON endereco.cliente_id = cliente.id 
+        JOIN
+            Funcionario ON agendamento.CodFuncionario = Funcionario.CodFuncionario
         WHERE 
             agendamento.situacao = 'Em aberto'
         AND 
             agendamento.CodFuncionario IS NOT NULL
         AND 
             agendamento.CodEmpresa = ?;
+        
         `,
         [req.params.id],
             (error, resultado, fields) =>{
