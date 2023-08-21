@@ -1,6 +1,8 @@
 <h1 align="center">API EAI</h1>
 <p align="center"><i>Repositorio para versionamento e desenvolvimento do projeto de API para apps da eAí</i></p>
 
+<img src="https://cdn.discordapp.com/attachments/1030689922681688175/1143229607118651542/florid-cloud-services-and-online-data-storage.png" />
+
 ##  About this project
 
 Este projeto é uma API Restful que integra 3 aplicações, fazendo cadastros, realizando autenticações e alterando status de usuários.
