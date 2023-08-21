@@ -11,9 +11,8 @@ Essa API foi desenvolvida com o propósito de oferecer uma plataforma completa e
 
 ### Technologies
 <p display="inline-block">
-  <img width="48" src="https://icons8.com/icon/54087/nodejs" alt="node-logo"/>
-  <img width="48" src="https://icons8.com/icon/108784/javascript" alt="js-logo"/>
-  <img width="48" src="https://icons8.com/icon/UFXRpPFebwa2/mysql-logo" alt="mysql-logo"/>
+  <img width="48" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="node-logo"/>
+  <img width="48" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" alt="js-logo"/>
 </p>
                                                                                                   
 ### Development Tools
