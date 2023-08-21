@@ -19,7 +19,7 @@ Essa API foi desenvolvida com o propósito de oferecer uma plataforma completa e
 ### Development Tools
 
 <p display="inline-block">
-  <img width="48" src="https://static.wikia.nocookie.net/logopedia/images/e/ec/Microsoft_Visual_Studio_2022.svg" alt="vs-logo"/>
+  <img width="48" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" alt="vscode-logo"/>
 </p>
 
 ## Running
