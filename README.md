@@ -1,8 +1,8 @@
 <h1 align="center">API EAI</h1>
-<p align="center"><i>Repositorio para versionamento e desenvolvimento do projeto de API para apps da eAí</i></p>
+<p align="center"><i>Repositório para versionamento e desenvolvimento do projeto de API para apps da eAí</i></p>
 
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/1030689922681688175/1143229607118651542/florid-cloud-services-and-online-data-storage.png" />
+  <img src="https://cdn.discordapp.com/attachments/1030689922681688175/1143231958650998834/florid-repository-graph.gif" />
 </p>
 
 ##  About this project
