@@ -9,6 +9,7 @@ const rotaPlano = require('./routes/planos');
 const rotaAgendamento = require('./routes/agendamento');
 const rotaEmpresa = require('./routes/empresa');
 const rotaFuncionario = require('./routes/funcionario');
+const rotaCartao = require('./routes/cartao');
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -30,6 +31,7 @@ app.use('/plano', rotaPlano);
 app.use('/agendamento', rotaAgendamento);
 app.use('/empresa', rotaEmpresa);
 app.use('/funcionario', rotaFuncionario);
+app.use('/cartao', rotaFuncionario);
 
 
 
