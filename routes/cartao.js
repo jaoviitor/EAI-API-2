@@ -6,8 +6,8 @@ const mysql = require('../mysql').pool;
 router.post('/cadastro', (req, res, next) => {
     mysql.getConnection((error, conn) =>{
         if(error){ return res.status(500).send({ error: error }) };
-        conn.query(`INSERT INTO cartao (cliente_id, token) VALUES (?, ?)`,
-        [req.body.cliente_id ,req.body.token],
+        conn.query(`INSERT INTO cartao (cliente_id, token, id_asaas) VALUES (?, ?, ?)`,
+        [req.body.cliente_id, req.body.token, req.body.id_asaas],
         (error, results) =>{
             conn.release();
             if (error) { return res.status(500).send({ error: error })}
