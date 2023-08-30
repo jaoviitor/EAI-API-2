@@ -30,13 +30,17 @@ Essa API foi desenvolvida com o propósito de oferecer uma plataforma completa e
 
 ## Endpoints Internos
 **Retorna os agendamentos confirmados**
+
 ```GET /api/v1/agendamento```
 
 **Retorna os agendamentos em aberto**
+
 ```GET /api/v1/agendamento/aberto/:id```
 
 **Altera o status do agendamento**
+
 ```POST /api/v1/agendamento/:id```
 
 **Atribui um funcionário de em agendamento**
+
 ```PUT /api/v1/agendamento/atribuir/:CodAgendamento```
