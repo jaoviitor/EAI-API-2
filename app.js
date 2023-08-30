@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+const apiVersion = '/api/v1';
 
 const rotaPlano = require('./routes/planos');
 const rotaAgendamento = require('./routes/agendamento');
@@ -27,11 +28,11 @@ app.use((req, res, next) =>{
     next();
 })
 
-app.use('/plano', rotaPlano);
-app.use('/agendamento', rotaAgendamento);
-app.use('/empresa', rotaEmpresa);
-app.use('/funcionario', rotaFuncionario);
-app.use('/cartao', rotaFuncionario);
+app.use(`${apiVersion}/plano`, rotaPlano);
+app.use(`${apiVersion}/agendamento`, rotaAgendamento);
+app.use(`${apiVersion}/empresa`, rotaEmpresa);
+app.use(`${apiVersion}/funcionario`, rotaFuncionario);
+app.use(`${apiVersion}/cartao`, rotaCartao);
 
 
 
