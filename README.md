@@ -26,7 +26,7 @@ Essa API foi desenvolvida com o propósito de oferecer uma plataforma completa e
 </p>
 
 ## Running
-node server.js
+```node server.js```
 
 ## Endpoints Internos
 
